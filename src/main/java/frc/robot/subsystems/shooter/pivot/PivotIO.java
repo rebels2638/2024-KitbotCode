@@ -7,14 +7,14 @@ public interface PivotIO {
     public static class PivotIOInputs {
         public double angleRad;
         
-        public double tTemp;
-        public double bTemp;
+        public double rTemp;
+        public double lTemp;
 
-        public double tAmps;
-        public double bAmps;
+        public double rAmps;
+        public double lAmps;
 
-        public double tVolts;
-        public double bVolts;
+        public double rVolts;
+        public double lbVolts;
     }
 
     public default void updateInputs(PivotIOInputs inputs) {}
