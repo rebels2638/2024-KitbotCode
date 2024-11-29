@@ -8,19 +8,19 @@ import com.revrobotics.CANSparkMax;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import frc.robot.lib.util.RebelUtil;
 
-public class FlywheeIlOSparkMAX implements FlywheelIO{
+public class FlywheeIlOSparkMAX implements FlywheelIO {
     
-    private static final double kMOTOR_TO_OUTPUT_RATIO = 2;
+    private static final double kMOTOR_TO_OUTPUT_RATIO = 1;
 
     // private PWMMotorController  
-    private CANSparkMax m_motorT = new CANSparkMax(88, CANSparkMax.MotorType.kBrushless);
-    private CANSparkMax m_motorB = new CANSparkMax(89, CANSparkMax.MotorType.kBrushless);   
+    private CANSparkMax m_motorT = new CANSparkMax(55, CANSparkMax.MotorType.kBrushless);
+    private CANSparkMax m_motorB = new CANSparkMax(15, CANSparkMax.MotorType.kBrushless);   
         
     private final SimpleMotorFeedforward realFF = new SimpleMotorFeedforward(0, 0, 0);
-
+    
     public FlywheeIlOSparkMAX() {
-        m_motorT.setIdleMode(IdleMode.kBrake);
-        m_motorB.setIdleMode(IdleMode.kBrake);
+        m_motorT.setIdleMode(IdleMode.kCoast);
+        m_motorB.setIdleMode(IdleMode.kCoast);
 
         m_motorT.setInverted(false);
         m_motorB.setInverted(false);
@@ -45,8 +45,4 @@ public class FlywheeIlOSparkMAX implements FlywheelIO{
         m_motorB.setVoltage(voltage);
     }
 
-    public double calculatedVoltage(double desiredRPM) {
-        double voltage = realFF.calculate(desiredRPM, Math.signum(desiredRPM));
-        return RebelUtil.constrain(voltage, -12, 12);
-    }
 }

@@ -8,35 +8,23 @@ import org.littletonrobotics.junction.inputs.LoggableInputs;
 public class RollerIOInputsAutoLogged extends RollerIO.RollerIOInputs implements LoggableInputs, Cloneable {
   @Override
   public void toLog(LogTable table) {
-    table.put("RPM", RPM);
-    table.put("TTemp", tTemp);
-    table.put("BTemp", bTemp);
-    table.put("TAmps", tAmps);
-    table.put("BAmps", bAmps);
-    table.put("TVolts", tVolts);
-    table.put("BVolts", bVolts);
+    table.put("VelocityRadSec", velocityRadSec);
+    table.put("InRoller", inRoller);
+    table.put("Voltage", voltage);
   }
 
   @Override
   public void fromLog(LogTable table) {
-    RPM = table.get("RPM", RPM);
-    tTemp = table.get("TTemp", tTemp);
-    bTemp = table.get("BTemp", bTemp);
-    tAmps = table.get("TAmps", tAmps);
-    bAmps = table.get("BAmps", bAmps);
-    tVolts = table.get("TVolts", tVolts);
-    bVolts = table.get("BVolts", bVolts);
+    velocityRadSec = table.get("VelocityRadSec", velocityRadSec);
+    inRoller = table.get("InRoller", inRoller);
+    voltage = table.get("Voltage", voltage);
   }
 
   public RollerIOInputsAutoLogged clone() {
     RollerIOInputsAutoLogged copy = new RollerIOInputsAutoLogged();
-    copy.RPM = this.RPM;
-    copy.tTemp = this.tTemp;
-    copy.bTemp = this.bTemp;
-    copy.tAmps = this.tAmps;
-    copy.bAmps = this.bAmps;
-    copy.tVolts = this.tVolts;
-    copy.bVolts = this.bVolts;
+    copy.velocityRadSec = this.velocityRadSec;
+    copy.inRoller = this.inRoller;
+    copy.voltage = this.voltage;
     return copy;
   }
 }

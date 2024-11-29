@@ -5,16 +5,17 @@ import org.littletonrobotics.junction.AutoLog;
 public interface PivotIO {
     @AutoLog
     public static class PivotIOInputs {
-        public double angleRad;
-        
-        public double rTemp;
-        public double lTemp;
+        public double angleRad = 0;
+        public double velocityRadSec = 0;
 
-        public double rAmps;
-        public double lAmps;
+        public double rTemp = 0;
+        public double lTemp = 0;
 
-        public double rVolts;
-        public double lbVolts;
+        public double rAmps = 0;
+        public double lAmps = 0;
+
+        public double rVolts = 0;
+        public double lbVolts = 0;
     }
 
     public default void updateInputs(PivotIOInputs inputs) {}

@@ -11,7 +11,7 @@ public class Flywheel extends SubsystemBase {
     private final FlywheelIOInputsAutoLogged inputs = new FlywheelIOInputsAutoLogged();
     private FlywheelIO io;
 
-    private final SimpleMotorFeedforward realFF = new SimpleMotorFeedforward(0, 0, 0);
+    private final SimpleMotorFeedforward realFF = new SimpleMotorFeedforward(0, 1, 0);
     private final SimpleMotorFeedforward simFF = new SimpleMotorFeedforward(0, 0.00208, .012);
     private final SimpleMotorFeedforward feedforward;
     
@@ -42,8 +42,8 @@ public class Flywheel extends SubsystemBase {
         io.updateInputs(inputs);
         Logger.processInputs("Flywheel", inputs);
 
-        double voltage = feedforward.calculate(desiredRPM, Math.signum(desiredRPM));
-        RebelUtil.constrain(voltage, -12, 12);
+        double voltage = feedforward.calculate(desiredRPM, Math.signum(desiredRPM - inputs.RPM));
+        voltage = RebelUtil.constrain(voltage, -12, 12);
 
         if (Math.max(inputs.tAmps, inputs.bAmps) > 40 || 
             Math.max(inputs.tVolts, inputs.tVolts) > 12 || 
@@ -68,6 +68,6 @@ public class Flywheel extends SubsystemBase {
     }
 
     public boolean reachedSetpoint() {
-        return Math.abs(inputs.RPM - desiredRPM) <= 5;
+        return Math.abs(inputs.RPM - desiredRPM) <= .4;
     }
 }

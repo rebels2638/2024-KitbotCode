@@ -13,7 +13,7 @@ public class RollerRun extends Command {
 
     @Override
     public void initialize() {
-        roller.setRPM(50);
+        roller.setSpeed(3);
     }
 
     @Override

@@ -13,7 +13,7 @@ public class RollerStop extends Command {
 
     @Override
     public void initialize() {
-        roller.setRPM(0);
+        roller.setSpeed(0);
     }
 
     @Override

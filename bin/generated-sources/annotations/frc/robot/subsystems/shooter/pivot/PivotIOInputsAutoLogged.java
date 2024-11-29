@@ -9,6 +9,7 @@ public class PivotIOInputsAutoLogged extends PivotIO.PivotIOInputs implements Lo
   @Override
   public void toLog(LogTable table) {
     table.put("AngleRad", angleRad);
+    table.put("VelocityRadSec", velocityRadSec);
     table.put("RTemp", rTemp);
     table.put("LTemp", lTemp);
     table.put("RAmps", rAmps);
@@ -20,6 +21,7 @@ public class PivotIOInputsAutoLogged extends PivotIO.PivotIOInputs implements Lo
   @Override
   public void fromLog(LogTable table) {
     angleRad = table.get("AngleRad", angleRad);
+    velocityRadSec = table.get("VelocityRadSec", velocityRadSec);
     rTemp = table.get("RTemp", rTemp);
     lTemp = table.get("LTemp", lTemp);
     rAmps = table.get("RAmps", rAmps);
@@ -31,6 +33,7 @@ public class PivotIOInputsAutoLogged extends PivotIO.PivotIOInputs implements Lo
   public PivotIOInputsAutoLogged clone() {
     PivotIOInputsAutoLogged copy = new PivotIOInputsAutoLogged();
     copy.angleRad = this.angleRad;
+    copy.velocityRadSec = this.velocityRadSec;
     copy.rTemp = this.rTemp;
     copy.lTemp = this.lTemp;
     copy.rAmps = this.rAmps;
